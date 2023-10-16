@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace adoNET
             {
                 connection.Open();
 
-                // operazion
+                // operazioni
 
                 connection.Close();
             }

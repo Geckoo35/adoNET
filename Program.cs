@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,15 @@ namespace adoNET
     {
         static void Main(string[] args)
         {
-            int a = 0;
+            string connectionString = "Data Source=chinook.db";
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                // operazion
+
+                connection.Close();
+            }
         }
     }
 }

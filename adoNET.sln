@@ -5,6 +5,11 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "adoNET", "adoNET.csproj", "{860558B3-FE42-46FF-91DB-4E7A64F131B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementi di soluzione", "Elementi di soluzione", "{15CA9122-6B73-4229-91C4-385412EEA298}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\chinook.db = ..\..\..\Downloads\chinook.db
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -32,7 +32,6 @@ namespace adoNET
                 connection.Close();
             }
         }
-
         public static void FillAlbums(string connectionString)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))

@@ -13,13 +13,27 @@ namespace adoNET
         static void Main(string[] args)
         {
             string connectionString = "Data Source=chinook.db";
+            funzioni.CreateAlbums(connectionString);
+            funzioni.FillAlbums(connectionString);
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
 
-                // operazioni
+                using (SQLiteCommand cmd = new SQLiteCommand(@"SELECT * FROM albums", connection))
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        //access data from reader
+                        int id = reader.GetInt32(0);
+                        string name = reader.GetString(1);
 
+                        //process the data
+                        Console.WriteLine("{0}-{1}", id, name);
+                    }
+                }
                 connection.Close();
+                Console.ReadKey();
             }
         }
     }

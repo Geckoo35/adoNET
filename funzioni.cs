@@ -86,5 +86,32 @@ INSERT INTO main.albums (AlbumId, Title, ArtistId) VALUES('39', 'International S
                 connection.Close();
             }
         }
+
+
+    }
+
+    public class ordine
+    {
+        public string data
+        {
+            get { return data; }
+            set { data = value; }
+        }
+        public string indirizzo
+        {
+            get { return indirizzo; }
+            set { indirizzo = value; }
+        }
+        public float prezzo
+        {
+            get { return prezzo; }
+            set { prezzo = value; }
+        }
+        public ordine(string Indirizzo, float Prezzo, string Data)
+        {
+            data = Data;
+            indirizzo = Indirizzo;
+            prezzo = Prezzo;
+        }
     }
 }

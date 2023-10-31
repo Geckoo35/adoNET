@@ -34,11 +34,13 @@ namespace adoNET
                 //    }
                 //    connection.Close();
                 connection.Open();
-                using (SQLiteCommand cmd = new SQLiteCommand(@"SELECT * FROM invoices WHERE BillingCountry = 'Germany'", connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(@"SELECT * FROM invoices WHERE BillingCountry = 'Germany' OR BillingCountry = 'USA'", connection))
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
-                    float totale = 0;
-                    int lunghezza = 0;   
+                    float totale_germania = 0;
+                    float totale_usa = 0;
+                    List<ordine> germania = new List<ordine>();
+                    List<ordine> usa = new List<ordine>();
                     while (reader.Read())
                     {
                         
@@ -46,10 +48,29 @@ namespace adoNET
                         float Total = reader.GetFloat(8);
 
                         //process the data
-
-                        totale = totale + Total;
+                        if (reader.GetString(6) == "Germany")
+                        {
+                            germania.Add(new ordine() { prezzo =  reader.GetFloat(3), data = reader.get });
+                            totale_germania = totale_germania + Total;
+                        }
+                        else
+                        {
+                            usa.Add( reader.GetFloat(8));
+                            totale_usa = totale_usa + Total;
+                        }
                     }
-                    Console.WriteLine("il totale di tutta la germania è: " + totale);
+                    usa.TrimExcess();
+                    germania.TrimExcess();
+                    for(int k =  0; k < germania.Count; k++)
+                    {
+                        Console.WriteLine(germania[k]);
+                    }
+                    Console.WriteLine("il totale di tutta la germania è: " + totale_germania);
+                    for (int k = 0; k < usa.Count; k++)
+                    {
+                        Console.WriteLine(usa[k]);
+                    }
+                    Console.WriteLine("il totale di tutta la usa è: " + totale_usa);
 
                 }
                 connection.Close();

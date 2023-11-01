@@ -50,25 +50,34 @@ namespace adoNET
                         //process the data
                         if (reader.GetString(6) == "Germany")
                         {
-                            germania.Add(new ordine() { prezzo =  reader.GetFloat(3), data = reader.get });
+                            string indirizzo = reader.GetString(3);
+                            float prezzo = reader.GetFloat(8);
+                            string data = reader.GetString(2);
+
+                            germania.Add(new ordine(indirizzo = reader.GetString(3), prezzo, data ));
                             totale_germania = totale_germania + Total;
                         }
                         else
                         {
-                            usa.Add( reader.GetFloat(8));
-                            totale_usa = totale_usa + Total;
+                            string indirizzo = reader.GetString(3);
+                            float prezzo = reader.GetFloat(8);
+                            string data = reader.GetString(2);
+
+                            usa.Add(new ordine(indirizzo = reader.GetString(3), prezzo, data)); totale_usa = totale_usa + Total;
                         }
                     }
                     usa.TrimExcess();
                     germania.TrimExcess();
+                    Console.WriteLine("ordini da parte della germania: \n");
                     for(int k =  0; k < germania.Count; k++)
                     {
-                        Console.WriteLine(germania[k]);
+                        Console.WriteLine("indirizzo: " + germania[k].Indirizzo + " Prezzo: " + germania[k].Prezzo + " Data: " + germania[k].Data + "\n");
                     }
-                    Console.WriteLine("il totale di tutta la germania è: " + totale_germania);
+                    Console.WriteLine("il totale di tutta la germania è: " + totale_germania + "\n");
+                    Console.WriteLine("ordini da parte degli USA: \n");
                     for (int k = 0; k < usa.Count; k++)
                     {
-                        Console.WriteLine(usa[k]);
+                        Console.WriteLine("indirizzo: " + usa[k].Indirizzo + " Prezzo: " + usa[k].Prezzo + " Data: " + usa[k].Data + "\n");
                     }
                     Console.WriteLine("il totale di tutta la usa è: " + totale_usa);
 
